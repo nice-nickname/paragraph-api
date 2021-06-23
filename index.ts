@@ -6,10 +6,10 @@ import cookieParser from "cookie-parser";
 import router from "./src/routes/routes";
 import errorHandler from "./src/middlewares/ErrorHandler";
 import environment from "./src/environment/environment";
-import ApiErrors from "./src/utils/Errors/ApiErrors";
+import db from "./src/models/db";
 
 const app = express()
-
+db.config
 // Configuration is below
 app.use(cors())
 app.use(bodyParser.json())
