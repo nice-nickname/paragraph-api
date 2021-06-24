@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import environment from "../environment/environment";
+import environment from "../../environment/environment";
 
 const db = new Sequelize({
     database: environment.DB_NAME,
