@@ -9,6 +9,14 @@ To start the project, clone this repository, after that, application needs to in
 
 ...
 
-Start command: npm run start
+###Start command: npm run start
+###Build command: npm run build
+##______________________________
 
-Build command: npm run build
+# ROUTES DESCRIPTION
+Exercises
+- GET /api/exercises - Выдать все упражнения в формате JSON
+- GET /api/exercises/:id - Выбать по ID
+- GET /api/exercises/:level - Выдать по уровню (A1..C2)
+- POST /api/exercises - Создать упражнение в БД, передавать через body
+- DELETE /api/exercises - Удалить по ID
