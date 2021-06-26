@@ -1,5 +1,6 @@
 import db from "../db";
 import * as Sequelize from "sequelize";
+import ExerciseContent from "./ExerciseContent";
 
 export default class Exercises extends Sequelize.Model {}
 
@@ -25,27 +26,31 @@ Exercises.init({
     },
 
     title: {
-        type: Sequelize.STRING(50),
+        type: Sequelize.STRING(25),
         allowNull: false,
     },
 
-    link: {
+    source: {
         type: Sequelize.STRING(100),
         allowNull: true
     },
 
-    content: {
-        type: Sequelize.STRING(50),
+    content_id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
     },
 
 }, {
     sequelize: db,
-    timestamps: false,
     tableName: 'exercises',
     indexes: [
         {
             fields: ['level']
+        },
+        {
+            fields: ['created_at']
         }
-    ]
+    ],
+    updatedAt: false,
+    createdAt: 'created_at'
 })
