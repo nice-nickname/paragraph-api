@@ -9,9 +9,11 @@ To start the project, clone this repository, after that, application needs to in
 
 ...
 
-###Start command: npm run start
-###Build command: npm run build
-##______________________________
+## Start command: npm run start
+
+## Build command: npm run build
+
+______________________________
 
 # ROUTES DESCRIPTION
 Exercises
