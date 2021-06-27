@@ -1,6 +1,7 @@
 import db from "../db";
 import * as Sequelize from "sequelize";
 import ExerciseContent from "./ExerciseContent";
+import ApiErrors from "../../../utils/Errors/ApiErrors";
 
 export default class Exercises extends Sequelize.Model {}
 
@@ -19,25 +20,22 @@ Exercises.init({
             is: /^A1|^A2|^C1|^C2|^B1|^B2/gm,
             isLenOkay(value: string) {
                 if (value.length !== 2) {
-                    throw new Error(`Invalid exercises.level string length. Predicated 2, received ${value.length}`)
+                    throw ApiErrors.BadRequest(
+                        `Invalid exercises.level string length. Predicated 2, received ${value.length}`
+                    )
                 }
             }
         },
     },
 
     title: {
-        type: Sequelize.STRING(25),
+        type: Sequelize.STRING(40),
         allowNull: false,
     },
 
     source: {
         type: Sequelize.STRING(100),
         allowNull: true
-    },
-
-    content_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
     },
 
 }, {

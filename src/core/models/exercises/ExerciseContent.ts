@@ -1,14 +1,18 @@
 import db from "../db";
 import * as Sequelize from "sequelize";
+import {Exercises} from "../models";
 
 export default class ExerciseContent extends Sequelize.Model {}
 
 ExerciseContent.init({
 
-    id: {
+    exercise_id: {
         type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+        references: {
+            model: Exercises
+        },
+        allowNull: false,
+        onDelete: 'CASCADE'
     },
 
     content: {
