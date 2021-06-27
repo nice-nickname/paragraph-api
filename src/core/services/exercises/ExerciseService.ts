@@ -1,6 +1,31 @@
 import {ExerciseContent, Exercises} from "../../models/models";
 
+interface Exercise {
+
+    id: number,
+    title: string,
+    level: string,
+    source: string,
+    created_at: Date,
+    ExerciseContent: Content[]
+}
+
+interface Content {
+    content: string,
+    order: number
+}
+
 export default class ExerciseService {
+
+    async getAll(): Promise<Exercise[]> {
+        let qres = await Exercises.findAll({
+            include: [{
+                model: ExerciseContent
+            }]
+        })
+        let data = await qres.map(i => i.toJSON()) as Exercise[]
+        return data
+    }
 
     async parseFile(file: string) {
         let obj = require(file)

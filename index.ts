@@ -6,8 +6,6 @@ import cookieParser from "cookie-parser";
 import router from "./src/routes/routes";
 import errorHandler from "./src/middlewares/ErrorHandler";
 import environment from "./src/environment/environment";
-import ExerciseService from "./src/core/services/exercises/ExerciseService";
-import {ExerciseContent, Exercises} from "./src/core/models/models";
 
 const app = express()
 
