@@ -1,11 +1,15 @@
-import Exercises from "./exercises/Exercises";
-import ExerciseContent from "./exercises/ExerciseContent";
+import Texts from "./exercises/Texts";
+import TextParagraphs from "./exercises/TextParagraphs";
+import TextLevels from "./exercises/TextLevels";
 
-Exercises.hasMany(ExerciseContent, {
-    foreignKey: 'exercise_id'
+Texts.hasMany(TextParagraphs, {
+    foreignKey: 'text_id'
 })
 
+TextLevels.hasOne(Texts, {foreignKey: 'level_id'})
+
 export {
-    Exercises,
-    ExerciseContent
+    Texts,
+    TextParagraphs,
+    TextLevels
 }

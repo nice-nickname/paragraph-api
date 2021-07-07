@@ -16,7 +16,7 @@ To start the project, clone this repository, after that, application needs to in
 ______________________________
 
 # ROUTES DESCRIPTION
-Exercises
+Texts
 - GET /api/exercises - Выдать все упражнения в формате JSON
 - GET /api/exercises/:id - Выбать по ID
 - GET /api/exercises/:level - Выдать по уровню (A1..C2)

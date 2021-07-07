@@ -1,15 +1,15 @@
 import db from "../db";
 import * as Sequelize from "sequelize";
-import {Exercises} from "../models";
+import {Texts} from "../models";
 
-export default class ExerciseContent extends Sequelize.Model {}
+export default class TextParagraphs extends Sequelize.Model {}
 
-ExerciseContent.init({
+TextParagraphs.init({
 
-    exercise_id: {
+    text_id: {
         type: Sequelize.INTEGER,
         references: {
-            model: Exercises
+            model: Texts
         },
         allowNull: false,
         onDelete: 'CASCADE'
@@ -27,6 +27,6 @@ ExerciseContent.init({
 
 }, {
     sequelize: db,
-    tableName: 'exercise_content',
+    tableName: 'texts_paragraphs',
     timestamps: false
 })
