@@ -21,3 +21,17 @@ app.use(errorHandler)
 app.listen(environment.PORT, () => {
     console.log('Server started...')
 })
+
+let data = splitTextToParagraphs(
+    require('./debug/text.json')[0].content,
+    {
+        maxSymbolsCount: 450,
+        paragraphDelimits: ['!', '.', '?'],
+        orderStartingFrom: 0
+    }
+)
+
+data.forEach(v => {
+    console.log(v)
+    console.log(v.content.length)
+})

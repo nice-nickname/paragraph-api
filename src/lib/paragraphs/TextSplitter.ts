@@ -68,6 +68,42 @@ export default function splitTextToParagraphs(text: string, params: SplitParams)
         return v.length != 0;
     })
 
+    // После всего этого, могут остаться слишком большие строки
+    // Чтобы убрать их, будем постепенно лишние предложения перемещать в последние строки
+    length = strings.length
+    for (let i = 0; i < length; i++) {
+        while (strings[i].length > params.maxSymbolsCount) {
+
+            let delimPosition = -1
+            // Ищем ближайший к концу разделитель
+            for (let j = 0; j < params.paragraphDelimits.length; j++) {
+                let delimiter = params.paragraphDelimits[j]
+                let currentDelimPosition = strings[i].lastIndexOf(delimiter, strings[i].length - 2)
+
+                if (currentDelimPosition > delimPosition) {
+                    delimPosition = currentDelimPosition
+                }
+            }
+
+            // Если после разделителя есть пробел
+            // то есть это не конец строки
+            if (strings[i][delimPosition + 1] == ' ') {
+                delimPosition += 1
+            }
+
+            // Выделяем подстроку и переносим в следующий элемент
+            if (strings[i+1]) {
+                strings[i + 1] = strings[i].substr(delimPosition + 1) + strings[i + 1]
+            }
+            else {
+                strings.push(strings[i].substr(delimPosition + 1))
+            }
+
+            // Убираем из текущей строки выделенную
+            strings[i] = strings[i].substring(0, delimPosition)
+        }
+    }
+
     let order = params.orderStartingFrom - 1
     return strings.map(v => {
         order++
